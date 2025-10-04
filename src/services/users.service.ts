@@ -1,4 +1,3 @@
-// src/services/users.service.ts
 import {
   Injectable,
   NotFoundException,
@@ -115,16 +114,13 @@ export class UsersService {
       throw new NotFoundException('Роль "Користувач" не знайдена');
     }
 
-    // Звільнити транспорт (через userRepo, оскільки транспорт вже завантажений)
     if (user.transports && user.transports.length > 0) {
       for (const transport of user.transports) {
         transport.driver = null;
-        // Зберігаємо через userRepo, оскільки транспорт вже в контексті
         await this.userRepo.manager.save(transport);
       }
     }
 
-    // Скасувати активні заявки
     const pendingApps = user.applications?.filter(
       (app) => app.status === 'pending'
     );
@@ -135,7 +131,6 @@ export class UsersService {
       }
     }
 
-    // Змінити роль на "Користувач" та деактивувати
     user.role = userRole;
     user.isActive = false;
     await this.userRepo.save(user);

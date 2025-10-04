@@ -13,7 +13,7 @@ import { JobApplication } from '../entity/job-application.entity';
 
 const dataSource = new DataSource({
   ...(ormConfig as DataSourceOptions),
-  dropSchema: true, // повністю видаляє всі таблиці перед ініціалізацією
+  dropSchema: true,
   synchronize: true,
 });
 
@@ -22,7 +22,6 @@ async function run() {
     await dataSource.initialize();
     console.log('✅ DataSource initialized');
 
-    // Репозиторії
     const roleRepo = dataSource.getRepository(Role);
     const userRepo = dataSource.getRepository(User);
     const transportRepo = dataSource.getRepository(Transport);
@@ -30,12 +29,10 @@ async function run() {
     const stopRepo = dataSource.getRepository(Stop);
     const appRepo = dataSource.getRepository(JobApplication);
 
-    // Створення ролей
     const rUser = await roleRepo.save({ roleName: 'Користувач' });
     const rDriver = await roleRepo.save({ roleName: 'Водій' });
     const rAdmin = await roleRepo.save({ roleName: 'Адміністратор' });
 
-    // Створення користувачів
     const admin = userRepo.create({
       name: 'Admin',
       surname: 'Adminov',
@@ -80,7 +77,6 @@ async function run() {
     });
     await userRepo.save(petro);
 
-    // Транспорт
     await transportRepo.save([
       {
         type: 'Автобус',
@@ -93,11 +89,9 @@ async function run() {
       { type: 'Маршрутка', number: 'MR9012GH', capacity: 20 },
     ]);
 
-    // Маршрути
     const route1 = await routeRepo.save({ name: 'Маршрут №1', distance: 12 });
     const route2 = await routeRepo.save({ name: 'Маршрут №2', distance: 18 });
 
-    // Зупинки
     await stopRepo.save([
       { route: route1, name: 'Центр', stopOrder: 1 },
       { route: route1, name: 'Ринок', stopOrder: 2 },
@@ -106,7 +100,6 @@ async function run() {
       { route: route2, name: 'Площа', stopOrder: 2 },
     ]);
 
-    // Заявки на роль
     await appRepo.save([
       { user: ivan, desiredRole: rDriver, status: 'pending' },
       {

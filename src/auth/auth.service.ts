@@ -1,4 +1,3 @@
-// src/auth/auth.service.ts
 import {
   Injectable,
   UnauthorizedException,
@@ -59,7 +58,7 @@ export class AuthService {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 1000 * 60 * 60, // 1h
+      maxAge: 1000 * 60 * 60,
     });
 
     return {

@@ -1,4 +1,3 @@
-// src/users/dto/create-worker.dto.ts
 import {
   IsEmail,
   IsString,

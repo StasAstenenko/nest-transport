@@ -16,5 +16,5 @@ export const ormConfig: TypeOrmModuleOptions = {
   synchronize: false,
   logging: true,
   entities: [User, Role, Transport, Route, Stop, JobApplication],
-  logger: 'advanced-console', // ← ДОДАЙТЕ
+  logger: 'advanced-console',
 };

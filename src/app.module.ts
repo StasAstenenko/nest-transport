@@ -1,4 +1,3 @@
-// src/app.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/users.module';
@@ -13,8 +12,8 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // робить ConfigModule доступним у всіх модулях
-      envFilePath: '.env', // шлях до .env файлу
+      isGlobal: true, 
+      envFilePath: '.env', 
     }),
     TypeOrmModule.forRoot(ormConfig),
     AuthModule,

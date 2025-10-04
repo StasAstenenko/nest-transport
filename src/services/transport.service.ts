@@ -30,7 +30,7 @@ export class TransportService {
     });
     if (!transport) throw new NotFoundException('Транспорт не знайдено');
     if (transport.driver) {
-      if (transport.driver.userId === userId) return transport; // вже його
+      if (transport.driver.userId === userId) return transport;
       throw new BadRequestException(
         'Цей транспорт вже закріплено за іншим водієм'
       );
