@@ -1,0 +1,30 @@
+### Jobs API Tests
+@baseUrl = http://localhost:4000
+@contentType = application/json
+@auth_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInJvbGUiOiLQmtC-0YDQuNGB0YLRg9Cy0LDRhyIsImlhdCI6MTc1OTYwMjY1OCwiZXhwIjoxNzU5NjA2MjU4fQ.91XJW7QvJQ7atQ-Hp7iblq5qf7RpbsoiJAe4RzBmFtk
+
+### 1. Create application
+POST {{baseUrl}}/applications
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "userId": 1,
+  "desiredRoleId": 2
+}
+
+### 2. Get all applications
+GET {{baseUrl}}/applications
+Authorization: Bearer {{auth_token}}
+
+### 3. Get user application
+GET {{baseUrl}}/applications/user/1
+Authorization: Bearer {{auth_token}}
+
+### 4. Approve application
+PATCH {{baseUrl}}/applications/1/approve
+Authorization: Bearer {{auth_token}}
+
+### 5. Reject application  
+PATCH {{baseUrl}}/applications/1/reject
+Authorization: Bearer {{auth_token}}

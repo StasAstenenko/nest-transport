@@ -1,0 +1,38 @@
+### Complete Flow Test
+@baseUrl = http://localhost:4000
+@contentType = application/json
+
+### Phase 1: Setup
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "name": "Адмін",
+  "surname": "Тестовий",
+  "age": 30, 
+  "email": "admin@test.com",
+  "password": "admin123"
+}
+
+### Phase 2: Authentication
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "admin@test.com",
+  "password": "admin123"
+}
+
+### Phase 3: Test all endpoints
+GET {{baseUrl}}/roles
+
+###
+GET {{baseUrl}}/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NTk2MDI4MTIsImV4cCI6MTc1OTYwNjQxMn0.17vC_8Ru3I3SFFMoLYpM1x08RPyhkz1RJUid8vXNMUE
+
+####
+GET {{baseUrl}}/transport  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NTk2MDIzODAsImV4cCI6MTc1OTYwNTk4MH0.b5v-Z4hfBci6SMxsEEvykV-Gqrx4cS6mWJGna5uLyJw
+###
+GET {{baseUrl}}/routes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NTk2MDIzODAsImV4cCI6MTc1OTYwNTk4MH0.b5v-Z4hfBci6SMxsEEvykV-Gqrx4cS6mWJGna5uLyJw

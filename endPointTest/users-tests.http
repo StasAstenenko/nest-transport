@@ -1,0 +1,40 @@
+### Users API Tests
+@baseUrl = http://localhost:4000
+@contentType = application/json
+@auth_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NTk2MDI4MTIsImV4cCI6MTc1OTYwNjQxMn0.17vC_8Ru3I3SFFMoLYpM1x08RPyhkz1RJUid8vXNMUE
+
+### 1. Get all users
+GET {{baseUrl}}/users
+Authorization: Bearer {{auth_token}}
+
+### 2. Get user by ID  
+GET {{baseUrl}}/users/1
+Authorization: Bearer {{auth_token}}
+
+### 3. Add worker
+POST {{baseUrl}}/users/add-worker
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "name": "Петро",
+  "surname": "Водій",
+  "age": 30,
+  "email": "driver@example.com",
+  "password": "driver123",
+  "role": "Водій"
+}
+
+### 4. Update user
+PATCH {{baseUrl}}/users/2
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "name": "Оновлене Ім'я",
+  "email": "updated@example.com"
+}
+
+### 5. Remove worker
+DELETE {{baseUrl}}/users/2
+Authorization: Bearer {{auth_token}}

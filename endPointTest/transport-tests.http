@@ -1,0 +1,31 @@
+### Transport API Tests
+@baseUrl = http://localhost:4000
+@contentType = application/json  
+@auth_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NTk2MDI4MTIsImV4cCI6MTc1OTYwNjQxMn0.17vC_8Ru3I3SFFMoLYpM1x08RPyhkz1RJUid8vXNMUE
+
+### 1. Get all transport
+GET {{baseUrl}}/transport
+Authorization: Bearer {{auth_token}}
+
+### 2. Get transport with drivers
+GET {{baseUrl}}/transport/with-drivers
+Authorization: Bearer {{auth_token}}
+
+### 3. Assign transport
+POST {{baseUrl}}/transport/assign
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "userId": 1,
+  "transportId": 1
+}
+
+### 4. Unassign transport
+POST {{baseUrl}}/transport/unassign  
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "transportId": 1
+}

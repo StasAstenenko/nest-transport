@@ -1,0 +1,19 @@
+### Auth API Tests - SIMPLE VERSION
+@baseUrl = http://localhost:4000
+@contentType = application/json
+
+### 1. Login user (отримаємо новий токен)
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### 2. Get current user (ВРУЧНУ скопіюйте токен з попередньої відповіді)
+GET {{baseUrl}}/auth/me
+Authorization: Bearer .eyJ1c2VySWQiOjUsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInJvbGUiOiLQmtC-0YDQuNGB0YLRg9Cy0LDRhyIsImlhdCI6MTc1OTYwMTgwNywiZXhwIjoxNzU5NjA1NDA3fQ.ZBd_yL_jt9JlEzsB0P6DMTlfmhKlq9jP_Q0Sgu0RqyU
+
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInJvbGUiOiLQmtC-0YDQuNGB0YLRg9Cy0LDRhyIsImlhdCI6MTc1OTYwMTgwNywiZXhwIjoxNzU5NjA1NDA3fQ.ZBd_yL_jt9JlEzsB0P6DMTlfmhKlq9jP_Q0Sgu0RqyU

@@ -1,0 +1,5 @@
+### Roles API Tests  
+@baseUrl = http://localhost:4000
+
+### Get all roles
+GET {{baseUrl}}/roles

@@ -1,0 +1,4 @@
+### Global Variables
+@baseUrl = http://localhost:4000
+@contentType = application/json
+@auth_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInJvbGUiOiLQmtC-0YDQuNGB0YLRg9Cy0LDRhyIsImlhdCI6MTc1OTU5OTg1NywiZXhwIjoxNzU5NjAzNDU3fQ.tqoDJBrdNFi5c57fzVeV77hlzaeyScCLQeRMWYRcAwY
