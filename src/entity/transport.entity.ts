@@ -4,6 +4,7 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  RelationId,
 } from 'typeorm';
 import { User } from './user.entity';
 
@@ -24,10 +25,10 @@ export class Transport {
   @Column({ nullable: true, name: 'transport_condition' })
   condition!: string;
 
-  @Column({ name: 'driver_id', nullable: true })
-  driverId!: number | null;
-
   @ManyToOne(() => User, (user) => user.transports, { nullable: true })
   @JoinColumn({ name: 'driver_id' })
   driver!: User | null;
+
+  @RelationId((transport: Transport) => transport.driver)
+  driverId!: number | null;
 }

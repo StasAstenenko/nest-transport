@@ -35,7 +35,7 @@ export class JobsController {
     return this.jobsService.getUserApplication(+userId);
   }
 
-  @Patch(':id/approve')
+  @Patch('/:id/approve')
   @Roles('Адміністратор')
   approve(@Param('id') id: number) {
     return this.jobsService.approve(+id);

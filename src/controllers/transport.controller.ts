@@ -15,14 +15,8 @@ export class TransportController {
     return this.transportService.findAll();
   }
 
-  @Get('with-drivers')
-  @Roles('Адміністратор')
-  getWithDrivers() {
-    return this.transportService.findAllWithDrivers();
-  }
-
   @Post('assign')
-  @Roles('Водій')
+  @Roles('Водій', 'Адміністратор')
   assign(@Body() body: { userId: number; transportId: number }) {
     return this.transportService.assignTransport(body.userId, body.transportId);
   }

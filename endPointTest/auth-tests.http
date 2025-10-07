@@ -7,13 +7,14 @@ POST {{baseUrl}}/auth/login
 Content-Type: {{contentType}}
 
 {
-  "email": "test@example.com",
-  "password": "password123"
+  "email": "stasastenenko02@gmail.com",
+  "password": "stas2004"
 }
 
 ### 2. Get current user (ВРУЧНУ скопіюйте токен з попередньої відповіді)
 GET {{baseUrl}}/auth/me
-Authorization: Bearer .eyJ1c2VySWQiOjUsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInJvbGUiOiLQmtC-0YDQuNGB0YLRg9Cy0LDRhyIsImlhdCI6MTc1OTYwMTgwNywiZXhwIjoxNzU5NjA1NDA3fQ.ZBd_yL_jt9JlEzsB0P6DMTlfmhKlq9jP_Q0Sgu0RqyU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoic3Rhc2FzdGVuZW5rbzAyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTY4OTgxNSwiZXhwIjoxNzU5NjkzNDE1fQ.hW3LzcLV3noJRZOPZolsnrDpeXt1l_Hw7orCzzr4COQ
 
+###
 POST {{baseUrl}}/auth/logout
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInJvbGUiOiLQmtC-0YDQuNGB0YLRg9Cy0LDRhyIsImlhdCI6MTc1OTYwMTgwNywiZXhwIjoxNzU5NjA1NDA3fQ.ZBd_yL_jt9JlEzsB0P6DMTlfmhKlq9jP_Q0Sgu0RqyU

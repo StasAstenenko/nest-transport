@@ -179,6 +179,7 @@ export class UsersService {
     user.surname = dto.surname ?? user.surname;
     user.age = dto.age ?? user.age;
     user.email = dto.email ?? user.email;
+    user.role.roleName = dto.role ?? user.role.roleName;
 
     await this.userRepo.save(user);
 

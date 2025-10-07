@@ -31,7 +31,6 @@ export class AuthService {
       where: { email },
       relations: ['role'],
     });
-
     if (!user || !user.isActive) {
       throw new UnauthorizedException('Невірний логін або пароль');
     }
@@ -42,15 +41,39 @@ export class AuthService {
     }
 
     const { password, ...rest } = user;
-    return rest;
+
+    return {
+      ...rest,
+      role: rest.role.roleName,
+    };
+  }
+
+  async findUserById(userId: number) {
+    const user = await this.userRepo.findOne({
+      where: { userId },
+      relations: ['role'],
+    });
+
+    if (!user || !user.isActive) {
+      throw new UnauthorizedException('Користувача не знайдено');
+    }
+
+    const { password, ...rest } = user;
+
+    return {
+      ...rest,
+      role: rest.role.roleName,
+    };
   }
 
   async login(user: any, res: any) {
     const payload = {
       userId: user.userId,
       email: user.email,
-      role: user.role.roleName,
+      role: user.role,
     };
+
+    console.log(payload);
 
     const token = this.jwtService.sign(payload);
 

@@ -67,6 +67,8 @@ export class JobsService {
       relations: ['user', 'desiredRole'],
     });
 
+    console.log(app);
+
     if (!app) {
       throw new NotFoundException('Заявку не знайдено');
     }

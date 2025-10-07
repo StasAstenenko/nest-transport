@@ -19,10 +19,6 @@ export class TransportService {
     return this.transportRepo.find({ relations: ['driver'] });
   }
 
-  async findAllWithDrivers() {
-    return this.transportRepo.find({ relations: ['driver'] });
-  }
-
   async assignTransport(userId: number, transportId: number) {
     const transport = await this.transportRepo.findOne({
       where: { transportId },

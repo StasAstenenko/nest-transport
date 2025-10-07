@@ -1,7 +1,9 @@
 ### Transport API Tests
 @baseUrl = http://localhost:4000
 @contentType = application/json  
-@auth_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NTk2MDI4MTIsImV4cCI6MTc1OTYwNjQxMn0.17vC_8Ru3I3SFFMoLYpM1x08RPyhkz1RJUid8vXNMUE
+@auth_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NTk2OTE3MjEsImV4cCI6MTc1OTY5NTMyMX0.rqBdqjdi47MGq-mvELcMHisNETwk4Dhs-5ZmBu00Ntw
+
+
 
 ### 1. Get all transport
 GET {{baseUrl}}/transport
