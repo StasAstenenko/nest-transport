@@ -78,7 +78,7 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
 
     res.cookie('token', token, {
-      httpOnly: true,
+      httpOnly: false,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 1000 * 60 * 60,
@@ -119,20 +119,44 @@ export class AuthService {
       age: dto.age,
       email: dto.email,
       password: hashed,
-      role,
+      role: role,
       isActive: true,
     });
 
+    console.log(user);
+
     await this.userRepo.save(user);
+
+    const payload = {
+      userId: user.userId,
+      email: user.email,
+      role: role.roleName,
+    };
+
+    console.log('reg: ', payload);
+
+    const token = this.jwtService.sign(payload);
 
     return {
       message: 'Реєстрація успішна',
-      userId: user.userId,
+      access_token: token,
+      user: {
+        userId: user.userId,
+        email: user.email,
+        role: user.role.roleName,
+        name: user.name,
+        surname: user.surname,
+      },
     };
   }
 
   async logout(res: any) {
-    res.clearCookie('token');
+    res.clearCookie('token', {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+    });
     return { message: 'Ви вийшли' };
   }
 }

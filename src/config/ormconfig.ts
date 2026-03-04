@@ -13,7 +13,7 @@ export const ormConfig: TypeOrmModuleOptions = {
   username: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASS || 'stas2004',
   database: process.env.DB_NAME || 'Transports',
-  synchronize: false,
+  synchronize: true,
   logging: true,
   entities: [User, Role, Transport, Route, Stop, JobApplication],
   logger: 'advanced-console',

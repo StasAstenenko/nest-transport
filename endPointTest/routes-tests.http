@@ -1,7 +1,57 @@
 ### Routes API Tests
 @baseUrl = http://localhost:4000
-@auth_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsInJvbGUiOiLQmtC-0YDQuNGB0YLRg9Cy0LDRhyIsImlhdCI6MTc1OTYwMjY1OCwiZXhwIjoxNzU5NjA2MjU4fQ.91XJW7QvJQ7atQ-Hp7iblq5qf7RpbsoiJAe4RzBmFtk
-
+@contentType = application/json
+@auth_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoi0JDQtNC80ZbQvdGW0YHRgtGA0LDRgtC-0YAiLCJpYXQiOjE3NzI1MjgxOTQsImV4cCI6MTc3MjUzMTc5NH0.cMOF3NuA3pg1-uMhH-IxUVg54YU4v0QB7Gy2n_EIe7U
 ### Get all routes
 GET {{baseUrl}}/routes
 Authorization: Bearer {{auth_token}}
+
+### 1. Створення нового маршруту (Тільки для Адміна)
+# Цей запит протестує вашу нову DTO зі вкладеними зупинками
+POST {{baseUrl}}/routes
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "name": "Маршрут №45 (Лівобережна - Позняки)",
+  "distance": 12,
+  "stops": [
+    { "name": "м. Лівобережна", "order": 1 },
+    { "name": "Русанівка", "order": 2 },
+    { "name": "м. Позняки", "order": 3 }
+  ]
+}
+
+### 2. Отримання всіх маршрутів із зупинками
+# Перевірка, чи зберігся попередній маршрут і чи працює реляція stops
+GET {{baseUrl}}/routes
+Authorization: Bearer {{auth_token}}
+
+### 3. Аналітика маршрутів (Найчастіше використовувані)
+# Це ваш новий ендпоінт для побудови графіків на фронтенді
+GET {{baseUrl}}/routes/analytics
+Authorization: Bearer {{auth_token}}
+
+### 4. Закріплення транспорту за маршрутом
+# Щоб аналітика в попередньому запиті була не нульовою, 
+# закріпіть існуючий транспорт (ID 1) за новим маршрутом (ID 1)
+# (Примітка: цей ендпоінт потрібно додати в TransportController)
+PATCH {{baseUrl}}/transport/4/assign-route
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "routeId": 4
+}
+
+### 1. Створення транспорту (Адмін)
+POST {{baseUrl}}/transport
+Content-Type: {{contentType}}
+Authorization: Bearer {{auth_token}}
+
+{
+  "type": "Автобус (Mercedes-Benz)",
+  "number": "AA 1234 BB",
+  "capacity": 50,
+  "condition": "Відмінний"
+}

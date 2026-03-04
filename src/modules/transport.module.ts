@@ -4,9 +4,10 @@ import { User } from '../entity/user.entity';
 import { Transport } from '../entity/transport.entity';
 import { TransportService } from '../services/transport.service';
 import { TransportController } from '../controllers/transport.controller';
+import { Route } from '../entity/route.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Transport, User])],
+  imports: [TypeOrmModule.forFeature([Transport, User, Route])],
   providers: [TransportService],
   controllers: [TransportController],
   exports: [TransportService],

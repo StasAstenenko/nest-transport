@@ -7,6 +7,7 @@ import {
   RelationId,
 } from 'typeorm';
 import { User } from './user.entity';
+import { Route } from './route.entity';
 
 @Entity({ name: 'transport' })
 export class Transport {
@@ -31,4 +32,11 @@ export class Transport {
 
   @RelationId((transport: Transport) => transport.driver)
   driverId!: number | null;
+
+  @ManyToOne(() => Route, (route) => route.transports, { nullable: true })
+  @JoinColumn({ name: 'route_id' })
+  route!: Route | null;
+
+  @RelationId((transport: Transport) => transport.route)
+  routeId!: number | null;
 }

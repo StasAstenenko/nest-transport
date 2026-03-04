@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Stop } from './stop.entity';
+import { Transport } from './transport.entity';
 
 @Entity({ name: 'routes' })
 export class Route {
@@ -14,4 +15,7 @@ export class Route {
 
   @OneToMany(() => Stop, (s) => s.route, { cascade: true })
   stops!: Stop[];
+
+  @OneToMany(() => Transport, (t) => t.route)
+  transports!: Transport[];
 }
